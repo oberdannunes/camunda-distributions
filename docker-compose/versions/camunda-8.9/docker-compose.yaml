@@ -21,9 +21,9 @@ services:
     image: camunda/camunda:${CAMUNDA_VERSION}
     container_name: orchestration
     ports:
-      - "26500:26500"
-      - "9600:9600"
-      - "8080:8080"
+      - 26500
+      - 9600
+      - 8080
     environment:
       - JAVA_TOOL_OPTIONS="-XX:+PrintFlagsFinal"
     mem_limit: 1g
@@ -54,7 +54,7 @@ services:
     image: camunda/connectors-bundle:${CAMUNDA_CONNECTORS_VERSION}
     container_name: connectors
     ports:
-      - "8086:8080"
+      - 8080
     environment:
       - management.endpoints.web.exposure.include=health,configprops
       - management.endpoint.health.probes.enabled=true
@@ -81,8 +81,8 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
     container_name: elasticsearch
     ports:
-      - "9200:9200"
-      - "9300:9300"
+      - 9200
+      - 9300
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
